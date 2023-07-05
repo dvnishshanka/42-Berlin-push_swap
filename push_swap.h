@@ -6,14 +6,20 @@
 
 #include <stdio.h>
 
-typedef struct Num_struct {
-    struct Num_struct *prev;
-    struct Num_struct *next;
+typedef struct s_stack_node {
+    struct s_stack_node *prev;
+    struct s_stack_node *next;
     int value;
-}   num_struct;
+}   t_stack_node;
 
-// Support functions
+///////// Support functions ////////
+
 long int ft_atol(const char *str);
 char **ft_split(char *str, char sep);
+void    print_error(void);
+t_stack_node *init_stack(t_stack_node *a, char **argv, int free_argv);
 
+// Freeing the memory
+void    ft_free_stack(t_stack_node *a);
+void    ft_free_array(char **str, int el);
 #endif

@@ -9,7 +9,7 @@ static int count_words(char *str, char sep)
     while (*str)
     {
         is_inside_word = 0;
-        while (*str == ' ')
+        while (*str == sep)
             str ++;
         while (*str != sep && *str)
         {
@@ -22,23 +22,70 @@ static int count_words(char *str, char sep)
     return (word_count);
 }
 
+static int  cal_word_len(char *str, char sep)
+{
+    int word_len;
+
+    word_len = 0;
+    while (*str == sep)
+        str ++;
+    while (*str != sep && *str)
+    {
+        word_len ++;
+        str ++;
+    } 
+    
+    return (word_len);
+}
+
+static char  *insert_word(char *str, char sep, char *argv)
+{
+    int i;
+
+    i = 0;
+    while (*str == sep)
+        str ++;
+    while (*str != sep && *str)
+    {
+        argv[i++] = *str;
+        str ++;
+    }
+    argv[i] = '\0';
+   
+    return (str);
+}
+
 
 char **ft_split(char *str, char sep)
 {
     char    **argv;
     int     word_count;
+    int     word_len;
     int     i;
 
     i = 0;
     word_count = count_words(str, sep);
-    argv = (char **)malloc(sizeof (char) * (word_count + 2));
+    printf("word_count: %d\n", word_count);
+    argv = (char **)malloc((sizeof (char *)) * (word_count + 2));
     if (!argv)
-        return (NULL);
-
+         print_error();
     while (i < (word_count + 2))
     {
-        i 
+        if (i == 0 || i == word_count + 1)
+            argv[i] = NULL;
+        else
+        {
+            word_len = cal_word_len(str, ' ');
+            printf("word_len: %d\n",word_len);
+            argv[i] = (char *)malloc((sizeof (char)) * (word_len + 1));
+            if (!argv[i])
+            {
+                ft_free_array(argv, i);
+                print_error();
+            }
+            str = insert_word(str, ' ', argv[i]);
+        }
+        i ++;
     }
-    printf("%d", word_count);
     return (argv);
 }
