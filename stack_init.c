@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_init.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dnishsha <dnishsha@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/06 09:25:38 by dnishsha          #+#    #+#             */
+/*   Updated: 2023/07/06 09:25:40 by dnishsha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 // Create a new node in the list
@@ -26,18 +38,18 @@ int	check_duplicate(long int num, t_stack_node *a)
 	return (0);
 }
 
-t_stack_node *init_stack(t_stack_node *a, char **argv, int free_argv)
+t_stack_node	*init_stack(t_stack_node *a, char **argv, int free_argv)
 {
-	int i;
-	long int	num;
+	int				i;
+	long int		num;
 	t_stack_node	*new_node;
 	t_stack_node	*prev_node;
-	
+
 	i = 1;
 	while (argv[i])
 	{
 		num = ft_atol(argv[i]);
-		if (check_duplicate(num, a) || num > 2147483647 || num < (-2147483648) )
+		if (check_duplicate(num, a) || num > 2147483647 || num < (-2147483648))
 		{
 			ft_free_stack(a);
 			if (free_argv)
