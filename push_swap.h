@@ -30,6 +30,12 @@ char			**ft_split(char *str, char sep);
 void			print_error(void);
 t_stack_node	*init_stack(t_stack_node *a, char **argv, int free_argv);
 
+// Stack operations
+void			rotate(t_stack_node **stack);
+void			reverse_rotate(t_stack_node **stack);
+void			swap(t_stack_node **stack);
+void			push(t_stack_node **stack1, t_stack_node **stack2);
+
 // Freeing the memory
 void			ft_free_stack(t_stack_node *a);
 void			ft_free_array(char **str, int el);

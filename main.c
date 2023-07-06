@@ -27,6 +27,7 @@ void	print_list(t_stack_node *list)
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
+	t_stack_node	*b;
 	int				free_argv;
 
 	free_argv = 0;
@@ -40,6 +41,16 @@ int	main(int argc, char **argv)
 	}
 	a = init_stack(a, argv, free_argv);
 	print_list(a);
+	rotate(&a);
+	rotate(&a);
+	print_list(a);
+	reverse_rotate(&a);
+	print_list(a);
+	swap(&a);
+	print_list(a);
+	push(&a, &b);
+	print_list(a);
+	print_list(b);
 	if (free_argv)
 		ft_free_array(argv, 0);
 	ft_free_stack(a);

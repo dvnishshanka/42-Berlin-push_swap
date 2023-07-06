@@ -3,7 +3,7 @@ CC= cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-SRC= main.c push_swap_utils.c ft_split.c stack_init.c free_mem.c
+SRC= main.c push_swap_utils.c ft_split.c stack_init.c free_mem.c operations.c
 OBJ = $(SRC:.c=.o)
 
 # The default rule that builds the library.
@@ -13,7 +13,7 @@ all: $(NAME)
 $(NAME): ${OBJ}
 	$(CC) $(CFLAGS) $^ -o $@
 
-$(OBJ):	
+$(OBJ):
 	$(CC) $(CFLAGS) -c $(SRC)
 
 %.o: %.c push_swap.h
