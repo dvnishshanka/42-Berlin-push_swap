@@ -23,6 +23,9 @@ static t_stack_node	*ft_lstnew(int value)
 	new_node->value = value;
 	new_node->next = 0;
 	new_node->prev = 0;
+	new_node->current_pos = 0;
+	new_node->target_node = 0;
+	new_node->push_price = 0;
 	return (new_node);
 }
 
@@ -38,6 +41,34 @@ int	check_duplicate(long int num, t_stack_node *a)
 	return (0);
 }
 
+// Include index on stack
+void	insert_node_pos(t_stack_node *stack)
+{
+	size_t	i;
+
+	i = 0;
+	while (stack)
+	{
+		stack->current_pos = i;
+		stack = stack->next;
+		i ++;
+	}
+}
+
+// Insert the target_node
+void	insert_target_node(t_stack_node *stack)
+{
+	int value;
+
+	while (stack)
+	{
+		value = stack->value;
+		stack->target_node = find_target_node(stack, value);
+		stack = stack->next;
+	}
+}
+
+// Initialize the stack
 t_stack_node	*init_stack(t_stack_node *a, char **argv, int free_argv)
 {
 	int				i;
@@ -70,5 +101,6 @@ t_stack_node	*init_stack(t_stack_node *a, char **argv, int free_argv)
 		}
 		i++;
 	}
+	insert_node_pos(a);
 	return (a);
 }

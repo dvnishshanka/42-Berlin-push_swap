@@ -3,7 +3,7 @@ CC= cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-SRC= main.c push_swap_utils.c ft_split.c stack_init.c free_mem.c operations.c
+SRC= main.c push_swap_utils.c ft_split.c stack_init1.c free_mem.c operations.c find_target_node.c push_op.c rotate_op.c reverse_rotate_op.c swap_op.c small_sort.c
 OBJ = $(SRC:.c=.o)
 
 # The default rule that builds the library.

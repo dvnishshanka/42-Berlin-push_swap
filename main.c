@@ -19,19 +19,22 @@ void	print_list(t_stack_node *list)
 	current_node = list;
 	while (current_node)
 	{
-		printf("Node: %d\n", current_node->value);
+		printf("Node %ld: %d\n",current_node->current_pos, current_node->value);
 		current_node = current_node->next;
 	}
+	printf("----------------------\n");
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
-	t_stack_node	*b;
+	// t_stack_node	*b;
 	int				free_argv;
+	size_t			stack_length;
 
 	free_argv = 0;
 	a = NULL;
+	// b = NULL;
 	if (argc == 1 || (argc == 2 && argv[1][0] == '\0' ))
 		return (0);
 	else if (argc == 2)
@@ -40,17 +43,17 @@ int	main(int argc, char **argv)
 		free_argv = 1;
 	}
 	a = init_stack(a, argv, free_argv);
+	if (is_stack_sorted(a))
+	{
+		stack_length = (ft_last_node(a)->current_pos) + 1;
+		if (stack_length == 2)
+			sa(&a);
+		else if (stack_length == 3)
+			a = small_sort(a);
+	}
+
 	print_list(a);
-	rotate(&a);
-	rotate(&a);
-	print_list(a);
-	reverse_rotate(&a);
-	print_list(a);
-	swap(&a);
-	print_list(a);
-	push(&a, &b);
-	print_list(a);
-	print_list(b);
+	
 	if (free_argv)
 		ft_free_array(argv, 0);
 	ft_free_stack(a);

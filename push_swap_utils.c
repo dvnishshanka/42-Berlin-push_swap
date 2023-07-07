@@ -19,7 +19,7 @@ void	print_error(void)
 	exit(1);
 }
 
-// Convert a string into a long integer
+// Convert a string into a long integer. In case of an error "2147483648" number is returned.
 long int	ft_atol(const char *str)
 {
 	long int	num;
@@ -35,9 +35,7 @@ long int	ft_atol(const char *str)
 	while (*str)
 	{
 		if (*str > '9' || *str < '0')
-		{
-			print_error();
-		}
+			return (2147483648);
 		num *= 10;
 		num += *str - '0';
 		str ++;

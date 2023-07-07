@@ -21,6 +21,9 @@ typedef struct s_stack_node {
 	struct s_stack_node	*prev;
 	struct s_stack_node	*next;
 	int					value;
+	size_t				current_pos;
+	size_t				push_price;
+	int					target_node;
 }	t_stack_node;
 
 ///////// Support functions ////////
@@ -28,14 +31,31 @@ typedef struct s_stack_node {
 long int		ft_atol(const char *str);
 char			**ft_split(char *str, char sep);
 void			print_error(void);
+
+// Initialize the stack
 t_stack_node	*init_stack(t_stack_node *a, char **argv, int free_argv);
+void			insert_node_pos(t_stack_node *stack);
 
 // Stack operations
-void			rotate(t_stack_node **stack);
-void			reverse_rotate(t_stack_node **stack);
-void			swap(t_stack_node **stack);
-void			push(t_stack_node **stack1, t_stack_node **stack2);
+void			pa(t_stack_node **b, t_stack_node **a);
+void			pb(t_stack_node **a, t_stack_node **b);
 
+void			ra(t_stack_node **a);
+void			rb(t_stack_node **b);
+void			rr(t_stack_node **a, t_stack_node **b);
+
+void			rra(t_stack_node **a);
+void			rrb(t_stack_node **b);
+void			rrr(t_stack_node **a, t_stack_node **b);
+
+void			sa(t_stack_node **a);
+void			sb(t_stack_node **b);
+void			ss(t_stack_node **a, t_stack_node **b);
+
+size_t			find_target_node(t_stack_node *stack, int value);
+int				is_stack_sorted(t_stack_node *stack);
+t_stack_node	*ft_last_node(t_stack_node *stack);
+t_stack_node	*small_sort(t_stack_node *stack);
 // Freeing the memory
 void			ft_free_stack(t_stack_node *a);
 void			ft_free_array(char **str, int el);
