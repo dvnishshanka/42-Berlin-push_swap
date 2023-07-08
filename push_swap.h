@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdio.h>
 
+// 'above median' = 0 by default. If the node is above median it is set to '1'.
 typedef struct s_stack_node {
 	struct s_stack_node	*prev;
 	struct s_stack_node	*next;
@@ -24,6 +25,7 @@ typedef struct s_stack_node {
 	size_t				current_pos;
 	size_t				push_price;
 	int					target_node;
+	int					above_median;
 }	t_stack_node;
 
 ///////// Support functions ////////
@@ -55,8 +57,15 @@ void			ss(t_stack_node **a, t_stack_node **b);
 size_t			find_target_node(t_stack_node *stack, int value);
 int				is_stack_sorted(t_stack_node *stack);
 t_stack_node	*ft_last_node(t_stack_node *stack);
-t_stack_node	*small_sort(t_stack_node *stack);
+void			small_sort(t_stack_node **stack);
+void			big_sort(t_stack_node **a, t_stack_node **b);
+void			update_target_nodes(t_stack_node **b, t_stack_node *a);
+void			add_above_median(t_stack_node *stack, size_t length);
+void			cal_push_price(t_stack_node	*a, t_stack_node *b);
 // Freeing the memory
 void			ft_free_stack(t_stack_node *a);
 void			ft_free_array(char **str, int el);
+
+
+void	print_list(t_stack_node *list, char *msg);
 #endif

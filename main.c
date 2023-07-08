@@ -12,29 +12,30 @@
 
 #include "push_swap.h"
 
-void	print_list(t_stack_node *list)
+void	print_list(t_stack_node *list, char *msg)
 {
 	t_stack_node	*current_node;
 
 	current_node = list;
+	printf("----------Stack %s---------\n", msg);
 	while (current_node)
 	{
-		printf("Node %ld: %d\n",current_node->current_pos, current_node->value);
+		printf("Node %ld- %d target: %d push_price: %ld above_median: %d\n",current_node->current_pos, current_node->value, current_node->target_node, current_node->push_price, current_node->above_median);
 		current_node = current_node->next;
 	}
-	printf("----------------------\n");
+	printf("\n");
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
-	// t_stack_node	*b;
+	t_stack_node	*b;
 	int				free_argv;
 	size_t			stack_length;
 
 	free_argv = 0;
 	a = NULL;
-	// b = NULL;
+	b = NULL;
 	if (argc == 1 || (argc == 2 && argv[1][0] == '\0' ))
 		return (0);
 	else if (argc == 2)
@@ -49,10 +50,13 @@ int	main(int argc, char **argv)
 		if (stack_length == 2)
 			sa(&a);
 		else if (stack_length == 3)
-			a = small_sort(a);
+			small_sort(&a);
+		else if (stack_length > 3)
+			big_sort(&a, &b);
 	}
 
-	print_list(a);
+	print_list(a, "a");
+	print_list(b, "b");
 	
 	if (free_argv)
 		ft_free_array(argv, 0);

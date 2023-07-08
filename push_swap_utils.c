@@ -42,3 +42,19 @@ long int	ft_atol(const char *str)
 	}
 	return (num * (sign));
 }
+
+void	update_target_nodes(t_stack_node **b, t_stack_node *a)
+{
+	size_t 			target_val;
+	t_stack_node	*curr_node;
+
+	if (!(*b))
+		return ;
+	curr_node = *b;
+	while (curr_node)
+	{
+		target_val = find_target_node(a,curr_node->value);
+		curr_node->target_node = target_val;
+		curr_node = curr_node->next;
+	}
+}

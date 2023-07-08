@@ -30,13 +30,13 @@ size_t	find_target_node(t_stack_node *stack, int value)
 	curr_node = stack;
 	while (curr_node)
 	{
-		if ((curr_node->value) > value && (target_node->value > (curr_node->value)))
-			target_node = stack;
+		if (((curr_node->value) > value) && (target_node == NULL || (target_node->value > (curr_node->value))))
+		{
+			target_node = curr_node;
+		}
 		curr_node = curr_node->next;
 	}
-
 	if (!target_node)
 		target_node = find_smallest(stack);
-
 	return (target_node->current_pos);
 }
