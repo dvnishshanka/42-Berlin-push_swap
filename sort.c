@@ -29,10 +29,33 @@ void	small_sort(t_stack_node **stack)
 		sa(stack);
 }
 
+// Find the node where the push_price is smallest
+static t_stack_node	*cheepest_node(t_stack_node *stack)
+{
+	t_stack_node *cheepest;
+
+	if (!stack)
+		return (NULL);
+	cheepest = stack;
+	while (stack)
+	{
+		if (stack->push_price < cheepest->push_price)
+			cheepest = stack;
+		if (cheepest->push_price == 1)
+			break;
+		stack = stack->next;
+	}
+	return (cheepest);
+}
+
 // This sort is applied if the stack size > 3
 void	big_sort(t_stack_node **a, t_stack_node **b)
 {
 	int				stack_a_len;
+	t_stack_node	*node;
+	t_stack_node	*smallest_node;
+	size_t			price_from_top;
+	size_t			price_from_bot;
 
 	stack_a_len = (ft_last_node(*a)->current_pos) + 1;
 	while (stack_a_len > 3)
@@ -42,7 +65,37 @@ void	big_sort(t_stack_node **a, t_stack_node **b)
 	}
 	small_sort(a);
 	update_target_nodes(b, *a);
-	add_above_median(*b, (ft_last_node(*b)->current_pos) + 1);
-	add_above_median(*a, stack_a_len);
-	cal_push_price(*a, *b);
+	while (*b)
+	{
+		node = cheepest_node(*b);
+		while ((node->ra)--)
+			ra(a);
+		while ((node->rb)--)
+			rb(b);
+		while ((node->rr)--)
+			rr(a, b);
+		while ((node->rra)--)
+			rra(a);
+		while ((node->rrb)--)
+			rrb(b);
+		while ((node->rrr)--)
+			rrr(a, b);
+		pa(b, a);
+		reset_node_data(*a);
+		reset_node_data(*b);
+		update_target_nodes(b, *a);
+	}
+	smallest_node = find_smallest(*a);
+	price_from_top = cal_price_from(smallest_node->current_pos, (ft_last_node(*a)->current_pos) + 1,'u');
+	price_from_bot = cal_price_from(smallest_node->current_pos, (ft_last_node(*a)->current_pos) + 1,'d');
+	if (price_from_top < price_from_bot)
+	{
+		while (price_from_top--)
+			ra(a);
+	}
+	else
+	{
+		while (price_from_bot--)
+			rra(a);
+	}
 }

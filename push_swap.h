@@ -26,6 +26,12 @@ typedef struct s_stack_node {
 	size_t				push_price;
 	int					target_node;
 	int					above_median;
+	size_t				ra;
+	size_t				rb;
+	size_t				rr;
+	size_t				rra;
+	size_t				rrb;
+	size_t				rrr;
 }	t_stack_node;
 
 ///////// Support functions ////////
@@ -62,6 +68,10 @@ void			big_sort(t_stack_node **a, t_stack_node **b);
 void			update_target_nodes(t_stack_node **b, t_stack_node *a);
 void			add_above_median(t_stack_node *stack, size_t length);
 void			cal_push_price(t_stack_node	*a, t_stack_node *b);
+void			reset_node_data(t_stack_node *stack);
+size_t 			cal_price_from(size_t pos, size_t length, char dir);
+t_stack_node	*find_smallest(t_stack_node *stack);
+
 // Freeing the memory
 void			ft_free_stack(t_stack_node *a);
 void			ft_free_array(char **str, int el);

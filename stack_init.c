@@ -27,6 +27,12 @@ static t_stack_node	*ft_lstnew(int value)
 	new_node->target_node = 0;
 	new_node->push_price = 0;
 	new_node->above_median = 0;
+	new_node->ra = 0;
+	new_node->rb = 0;
+	new_node->rr = 0;
+	new_node->rra = 0;
+	new_node->rrb = 0;
+	new_node->rrr = 0;
 	return (new_node);
 }
 

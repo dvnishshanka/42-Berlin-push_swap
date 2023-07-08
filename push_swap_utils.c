@@ -57,4 +57,25 @@ void	update_target_nodes(t_stack_node **b, t_stack_node *a)
 		curr_node->target_node = target_val;
 		curr_node = curr_node->next;
 	}
+	add_above_median(*b, (ft_last_node(*b)->current_pos) + 1);
+	add_above_median(a, (ft_last_node(a)->current_pos) + 1);
+	cal_push_price(a, *b);
+}
+
+// Reset rotation details, push_price, target_node, above_median
+void	reset_node_data(t_stack_node *stack)
+{
+	while (stack)
+	{
+		stack->push_price = 0;
+		stack->target_node = 0;
+		stack->above_median = 0;
+		stack->ra = 0;
+		stack->rb = 0;
+		stack->rr = 0;
+		stack->rra = 0;
+		stack->rrb = 0;
+		stack->rrr = 0;
+		stack = stack->next;
+	}
 }

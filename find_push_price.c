@@ -36,7 +36,7 @@ static int	find_small_num(int num1, int num2)
 }
 
 // Calculate push_price to bring the target node from rotating.
-static size_t cal_price_from(size_t pos, size_t length, char dir)
+size_t cal_price_from(size_t pos, size_t length, char dir)
 {
 	if (dir == 'u')
 		return (pos);
@@ -61,19 +61,38 @@ void	cal_push_price(t_stack_node	*a, t_stack_node *b)
 		target_node = find_node(a, b->target_node);
 		a_pos = target_node->current_pos;
 		b_pos =  b->current_pos;
-		printf("%ld %ld \n", a_pos, b_pos);
 		if (a_pos == 0 && b_pos == 0)
 			b->push_price = 1;
 		else if (target_node->above_median == 1 && (b->above_median) == 1)
+		{	
+			b->rr = find_small_num(cal_price_from(a_pos, a_stack_len, 'u'), cal_price_from(b_pos, b_stack_len, 'u'));
+			b->ra = cal_price_from(a_pos, a_stack_len, 'u') - b->rr;
+			b->rb = cal_price_from(b_pos, b_stack_len, 'u') - b->rr;
 			b->push_price = cal_price_from(a_pos, a_stack_len, 'u') + cal_price_from(b_pos, b_stack_len, 'u') -
 								find_small_num(cal_price_from(a_pos, a_stack_len, 'u'), cal_price_from(b_pos, b_stack_len, 'u')) + 1;
+		}
 		else if (target_node->above_median == 0 && (b->above_median) == 0)
+		{	
+			b->rrr = find_small_num(cal_price_from(a_pos, a_stack_len, 'd'), cal_price_from(b_pos, b_stack_len, 'd'));
+			b->rra = cal_price_from(a_pos, a_stack_len, 'd') - b->rr;
+			b->rrb = cal_price_from(b_pos, b_stack_len, 'd') - b->rr;
 			b->push_price = cal_price_from(a_pos, a_stack_len, 'd') + cal_price_from(b_pos, b_stack_len, 'd') -
 								find_small_num(cal_price_from(a_pos, a_stack_len, 'd'), cal_price_from(b_pos, b_stack_len, 'd')) + 1;
+		}
 		else if (target_node->above_median == 0 && (b->above_median) == 1)
+		{
+			b->rra = cal_price_from(a_pos, a_stack_len, 'd');
+			b->rb = cal_price_from(b_pos, b_stack_len, 'u');
 			b->push_price = cal_price_from(a_pos, a_stack_len, 'd') + cal_price_from(b_pos, b_stack_len, 'u') + 1;
+		}
 		else if (target_node->above_median == 1 && (b->above_median) == 0)
+		{
+			b->ra = cal_price_from(a_pos, a_stack_len, 'u');
+			b->rrb = cal_price_from(b_pos, b_stack_len, 'd');
 			b->push_price = cal_price_from(a_pos, a_stack_len, 'u') + cal_price_from(b_pos, b_stack_len, 'd') + 1;
+		}
+		if (b->push_price ==1)
+			break;
 		b = b->next;
 	}
 }
