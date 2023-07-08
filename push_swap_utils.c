@@ -69,7 +69,7 @@ void	reset_node_data(t_stack_node *stack)
 	{
 		stack->push_price = 0;
 		stack->target_node = 0;
-		stack->above_median = 0;
+		stack->pos = 'd';
 		stack->ra = 0;
 		stack->rb = 0;
 		stack->rr = 0;

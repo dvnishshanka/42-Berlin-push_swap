@@ -25,7 +25,7 @@ typedef struct s_stack_node {
 	size_t				current_pos;
 	size_t				push_price;
 	int					target_node;
-	int					above_median;
+	char				pos;
 	size_t				ra;
 	size_t				rb;
 	size_t				rr;

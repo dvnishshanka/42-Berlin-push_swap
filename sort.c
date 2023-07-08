@@ -81,7 +81,6 @@ void	big_sort(t_stack_node **a, t_stack_node **b)
 		while ((node->rrr)--)
 			rrr(a, b);
 		pa(b, a);
-		reset_node_data(*a);
 		reset_node_data(*b);
 		update_target_nodes(b, *a);
 	}
