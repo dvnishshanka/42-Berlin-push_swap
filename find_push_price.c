@@ -28,8 +28,6 @@ t_stack_node	*find_node(t_stack_node *stack, size_t target)
 	return (NULL);
 }
 
-
-
 // Calculate push_price to bring the target node from rotating.
 size_t cal_price_from(size_t pos, size_t length, char dir)
 {
@@ -38,8 +36,6 @@ size_t cal_price_from(size_t pos, size_t length, char dir)
 	else
 		return (length - pos);
 }
-
-
 
 void	cal_push_price(t_stack_node	*a, t_stack_node *b)
 {

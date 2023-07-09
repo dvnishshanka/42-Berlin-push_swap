@@ -1,6 +1,5 @@
 #include "push_swap.h"
 
-
 static int	find_small_num(int num1, int num2)
 {
 	if (num1 < num2)
@@ -15,7 +14,7 @@ void	insert_push_op(t_stack_node *target_node, t_stack_node *b, size_t a_stack_l
 		b->rr = find_small_num(cal_price_from(a_pos, a_stack_len, 'u'), cal_price_from(b_pos, b_stack_len, 'u'));
 		b->ra = cal_price_from(a_pos, a_stack_len, 'u') - b->rr;
 		b->rb = cal_price_from(b_pos, b_stack_len, 'u') - b->rr;
-		b->push_price = b->ra + cal_price_from(b_pos, b_stack_len, 'u') + 1;
+	
 	}
 	else if (target_node->pos == 'd' && (b->pos) == 'd')
 	{	
