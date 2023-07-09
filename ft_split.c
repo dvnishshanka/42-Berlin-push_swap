@@ -73,7 +73,6 @@ char	**ft_split(char *str, char sep)
 
 	i = 0;
 	word_count = count_words(str, sep);
-	printf("word_count: %d\n", word_count);
 	argv = (char **)malloc((sizeof (char *)) * (word_count + 2));
 	if (!argv)
 		print_error();

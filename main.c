@@ -20,7 +20,8 @@ void	print_list(t_stack_node *list, char *msg)
 	printf("----------Stack %s---------\n", msg);
 	while (current_node)
 	{
-		printf("Node %ld- %d target: %d push_price: %ld above_median: %d\n",current_node->current_pos, current_node->value, current_node->target_node, current_node->push_price, current_node->pos);
+		printf("Node %ld- %d target: %d push_price: %ld above_median: %d",current_node->current_pos, current_node->value, current_node->target_node, current_node->push_price, current_node->pos);
+		printf("ra:%ld rb:%ld rr:%ld rra:%ld rrb:%ld prev: %p next: %p\n", current_node->ra, current_node->rb, current_node->rr, current_node->rra, current_node->rrb, current_node->prev, current_node->next);
 		current_node = current_node->next;
 	}
 	printf("\n");
@@ -55,8 +56,7 @@ int	main(int argc, char **argv)
 			big_sort(&a, &b);
 	}
 
-	// print_list(a, "a");
-	// print_list(b, "b");
+	print_list(a, "a");
 	
 	if (free_argv)
 		ft_free_array(argv, 0);

@@ -27,6 +27,8 @@ long int	ft_atol(const char *str)
 
 	sign = 1;
 	num = 0;
+	if (!*str)
+		return (2147483648);
 	if (*str && *str == '-')
 	{
 		sign = -1;

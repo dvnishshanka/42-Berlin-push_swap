@@ -28,12 +28,7 @@ t_stack_node	*find_node(t_stack_node *stack, size_t target)
 	return (NULL);
 }
 
-static int	find_small_num(int num1, int num2)
-{
-	if (num1 < num2)
-		return (num1);
-	return (num2);
-}
+
 
 // Calculate push_price to bring the target node from rotating.
 size_t cal_price_from(size_t pos, size_t length, char dir)
@@ -43,6 +38,8 @@ size_t cal_price_from(size_t pos, size_t length, char dir)
 	else
 		return (length - pos);
 }
+
+
 
 void	cal_push_price(t_stack_node	*a, t_stack_node *b)
 {
@@ -63,32 +60,8 @@ void	cal_push_price(t_stack_node	*a, t_stack_node *b)
 		b_pos =  b->current_pos;
 		if (a_pos == 0 && b_pos == 0)
 			b->push_price = 1;
-		else if (target_node->pos == 'u' && (b->pos) == 'u')
-		{	
-			b->rr = find_small_num(cal_price_from(a_pos, a_stack_len, 'u'), cal_price_from(b_pos, b_stack_len, 'u'));
-			b->ra = cal_price_from(a_pos, a_stack_len, 'u') - b->rr;
-			b->rb = cal_price_from(b_pos, b_stack_len, 'u') - b->rr;
-			b->push_price = b->ra + cal_price_from(b_pos, b_stack_len, 'u') + 1;
-		}
-		else if (target_node->pos == 'd' && (b->pos) == 'd')
-		{	
-			b->rrr = find_small_num(cal_price_from(a_pos, a_stack_len, 'd'), cal_price_from(b_pos, b_stack_len, 'd'));
-			b->rra = cal_price_from(a_pos, a_stack_len, 'd') - b->rrr;
-			b->rrb = cal_price_from(b_pos, b_stack_len, 'd') - b->rrr;
-			b->push_price = b->rra  + cal_price_from(b_pos, b_stack_len, 'd') + 1;
-		}
-		else if (target_node->pos == 'd' && (b->pos) == 'u')
-		{
-			b->rra = cal_price_from(a_pos, a_stack_len, 'd');
-			b->rb = cal_price_from(b_pos, b_stack_len, 'u');
-			b->push_price = b->rra + b->rb + 1;
-		}
-		else if (target_node->pos == 'u' && (b->pos) == 'd')
-		{
-			b->ra = cal_price_from(a_pos, a_stack_len, 'u');
-			b->rrb = cal_price_from(b_pos, b_stack_len, 'd');
-			b->push_price = b->ra + b->rrb + 1;
-		}
+		else
+			insert_push_op(target_node,b, a_stack_len, b_stack_len, a_pos, b_pos);
 		if (b->push_price == 1)
 			break;
 		b = b->next;

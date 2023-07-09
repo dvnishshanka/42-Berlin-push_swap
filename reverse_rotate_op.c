@@ -6,10 +6,13 @@ static void	reverse_rotate(t_stack_node **stack)
 {
 	t_stack_node	*new_head;
 
+	if (!stack || (ft_last_node(*stack)->current_pos) == 0)
+		return ;
 	new_head = ft_last_node(*stack);
 	(new_head->prev)->next = NULL;
 	new_head->prev = NULL;
 	new_head->next = *stack;
+	(*stack)->prev = new_head;
 	*stack = new_head;
 	insert_node_pos(*stack);
 }

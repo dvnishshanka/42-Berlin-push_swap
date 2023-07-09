@@ -69,7 +69,9 @@ void	big_sort(t_stack_node **a, t_stack_node **b)
 	{
 		node = cheepest_node(*b);
 		while ((node->ra)--)
-			ra(a);
+		{	
+			ra(a);}
+		
 		while ((node->rb)--)
 			rb(b);
 		while ((node->rr)--)
