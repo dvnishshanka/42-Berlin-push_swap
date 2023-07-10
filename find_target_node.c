@@ -17,9 +17,7 @@ t_stack_node	*find_smallest(t_stack_node *stack)
 	t_stack_node	*smallest_node;
 
 	if (!stack)
-	{
 		return (NULL);
-	}
 	smallest_node = stack;
 	while (stack)
 	{

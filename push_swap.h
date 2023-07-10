@@ -17,8 +17,6 @@
 # include <unistd.h>
 # include <stdio.h>
 
-// 'above median' = 'd' by default.
-// If the node is above median it is set to 'u'.
 typedef struct s_stack_node {
 	struct s_stack_node	*prev;
 	struct s_stack_node	*next;
@@ -26,7 +24,6 @@ typedef struct s_stack_node {
 	size_t				current_pos;
 	size_t				push_price;
 	int					target_node;
-	char				pos;
 	size_t				ra;
 	size_t				rb;
 	size_t				rr;
@@ -67,13 +64,13 @@ t_stack_node	*ft_last_node(t_stack_node *stack);
 void			small_sort(t_stack_node **stack);
 void			big_sort(t_stack_node **a, t_stack_node **b);
 void			update_target_nodes(t_stack_node **b, t_stack_node *a);
-void			add_above_median(t_stack_node *stack, size_t length);
 void			cal_push_price(t_stack_node	*a, t_stack_node *b);
 void			reset_node_data(t_stack_node *stack);
 size_t			cal_price_from(size_t pos, size_t length, char dir);
 t_stack_node	*find_smallest(t_stack_node *stack);
-void			insert_push_op(t_stack_node *target_node, t_stack_node *b,
-					size_t a_stack_len, size_t b_stack_len, size_t a_pos,size_t b_pos);
+void			insert_push_op(t_stack_node *a, t_stack_node *b);
+void			reset_seq(t_stack_node *stack);
+
 // Freeing the memory
 void			ft_free_stack(t_stack_node *a);
 void			ft_free_array(char **str, int el);

@@ -26,7 +26,6 @@ static t_stack_node	*ft_lstnew(int value)
 	new_node->current_pos = 0;
 	new_node->target_node = 0;
 	new_node->push_price = 0;
-	new_node->pos = 'd';
 	new_node->ra = 0;
 	new_node->rb = 0;
 	new_node->rr = 0;
