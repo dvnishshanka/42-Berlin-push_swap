@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dnishsha <dnishsha@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/10 10:26:56 by dnishsha          #+#    #+#             */
+/*   Updated: 2023/07/10 10:27:01 by dnishsha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -32,7 +43,7 @@ void	small_sort(t_stack_node **stack)
 // Find the node where the push_price is smallest
 static t_stack_node	*cheepest_node(t_stack_node *stack)
 {
-	t_stack_node *cheepest;
+	t_stack_node	*cheepest;
 
 	if (!stack)
 		return (NULL);
@@ -42,7 +53,7 @@ static t_stack_node	*cheepest_node(t_stack_node *stack)
 		if (stack->push_price < cheepest->push_price)
 			cheepest = stack;
 		if (cheepest->push_price == 1)
-			break;
+			break ;
 		stack = stack->next;
 	}
 	return (cheepest);
@@ -69,9 +80,9 @@ void	big_sort(t_stack_node **a, t_stack_node **b)
 	{
 		node = cheepest_node(*b);
 		while ((node->ra)--)
-		{	
+		{
 			ra(a);}
-		
+
 		while ((node->rb)--)
 			rb(b);
 		while ((node->rr)--)

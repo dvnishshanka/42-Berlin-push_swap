@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dnishsha <dnishsha@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 10:41:58 by dnishsha          #+#    #+#             */
-/*   Updated: 2023/07/07 13:37:19 by marvin           ###   ########.fr       */
+/*   Updated: 2023/07/10 10:22:07 by dnishsha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_stack_node	*ft_last_node(t_stack_node *stack)
 }
 
 // Check whether the stack is sorted. Returns 1 if it is not sorted.
-int is_stack_sorted(t_stack_node *stack)
+int	is_stack_sorted(t_stack_node *stack)
 {
 	if (!stack)
 		return (0);

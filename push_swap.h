@@ -17,7 +17,8 @@
 # include <unistd.h>
 # include <stdio.h>
 
-// 'above median' = 'd' by default. If the node is above median it is set to 'u'.
+// 'above median' = 'd' by default.
+// If the node is above median it is set to 'u'.
 typedef struct s_stack_node {
 	struct s_stack_node	*prev;
 	struct s_stack_node	*next;
@@ -69,13 +70,14 @@ void			update_target_nodes(t_stack_node **b, t_stack_node *a);
 void			add_above_median(t_stack_node *stack, size_t length);
 void			cal_push_price(t_stack_node	*a, t_stack_node *b);
 void			reset_node_data(t_stack_node *stack);
-size_t 			cal_price_from(size_t pos, size_t length, char dir);
+size_t			cal_price_from(size_t pos, size_t length, char dir);
 t_stack_node	*find_smallest(t_stack_node *stack);
-void	insert_push_op(t_stack_node *target_node,t_stack_node *b, size_t a_stack_len, size_t b_stack_len, size_t a_pos,size_t b_pos);
+void			insert_push_op(t_stack_node *target_node, t_stack_node *b,
+					size_t a_stack_len, size_t b_stack_len, size_t a_pos,size_t b_pos);
 // Freeing the memory
 void			ft_free_stack(t_stack_node *a);
 void			ft_free_array(char **str, int el);
 
+void			print_list(t_stack_node *list, char *msg);
 
-void	print_list(t_stack_node *list, char *msg);
 #endif

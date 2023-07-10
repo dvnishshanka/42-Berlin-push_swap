@@ -65,7 +65,7 @@ void	insert_node_pos(t_stack_node *stack)
 // Insert the target_node
 void	insert_target_node(t_stack_node *stack)
 {
-	int value;
+	int	value;
 
 	while (stack)
 	{

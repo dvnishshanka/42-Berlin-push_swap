@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_op.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dnishsha <dnishsha@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/10 10:22:39 by dnishsha          #+#    #+#             */
+/*   Updated: 2023/07/10 10:22:42 by dnishsha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -16,7 +27,7 @@ static void	push(t_stack_node **stack1, t_stack_node **stack2)
 		if (*stack2)
 		{
 			element->next = *stack2;
-			(*stack2)->prev = element;	
+			(*stack2)->prev = element;
 		}
 		else
 		{
@@ -36,7 +47,7 @@ void	pa(t_stack_node **b, t_stack_node **a)
 	{
 		push(b, a);
 		write(1, "pa\n", 3);
-	}	
+	}
 }
 
 /* Take the first element at the top of a and put it at the top of b.
@@ -47,5 +58,5 @@ void	pb(t_stack_node **a, t_stack_node **b)
 	{
 		push(a, b);
 		write(1, "pb\n", 3);
-	}	
+	}
 }

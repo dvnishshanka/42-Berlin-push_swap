@@ -55,9 +55,7 @@ int	main(int argc, char **argv)
 		else if (stack_length > 3)
 			big_sort(&a, &b);
 	}
-
-	print_list(a, "a");
-	
+	// print_list(a, "a");
 	if (free_argv)
 		ft_free_array(argv, 0);
 	ft_free_stack(a);

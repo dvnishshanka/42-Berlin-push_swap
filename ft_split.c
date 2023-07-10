@@ -83,7 +83,7 @@ char	**ft_split(char *str, char sep)
 		else
 		{
 			argv[i] = (char *)malloc(sizeof (char)
-			* (cal_word_len(str, ' ') + 1));
+					* (cal_word_len(str, ' ') + 1));
 			if (!argv[i])
 			{
 				ft_free_array(argv, i);

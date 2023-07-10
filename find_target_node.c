@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_target_node.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dnishsha <dnishsha@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/10 10:21:24 by dnishsha          #+#    #+#             */
+/*   Updated: 2023/07/10 10:21:26 by dnishsha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -26,11 +37,12 @@ size_t	find_target_node(t_stack_node *stack, int value)
 
 	target_node = NULL;
 	if (!stack)
-		return 0;
+		return (0);
 	curr_node = stack;
 	while (curr_node)
 	{
-		if (((curr_node->value) > value) && (target_node == NULL || (target_node->value > (curr_node->value))))
+		if (((curr_node->value) > value) && (target_node == NULL
+				|| (target_node->value > (curr_node->value))))
 		{
 			target_node = curr_node;
 		}

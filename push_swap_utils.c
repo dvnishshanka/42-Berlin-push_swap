@@ -19,7 +19,8 @@ void	print_error(void)
 	exit(1);
 }
 
-// Convert a string into a long integer. In case of an error "2147483648" number is returned.
+// Convert a string into a long integer.
+// In case of an error "2147483648" number is returned.
 long int	ft_atol(const char *str)
 {
 	long int	num;
@@ -47,7 +48,7 @@ long int	ft_atol(const char *str)
 
 void	update_target_nodes(t_stack_node **b, t_stack_node *a)
 {
-	size_t 			target_val;
+	size_t			target_val;
 	t_stack_node	*curr_node;
 
 	if (!(*b))
