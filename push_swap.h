@@ -37,6 +37,7 @@ typedef struct s_stack_node {
 long int		ft_atol(const char *str);
 char			**ft_split(char *str, char sep);
 void			print_error(void);
+int				find_small_num(int num1, int num2);
 
 // Initialize the stack
 t_stack_node	*init_stack(t_stack_node *a, char **argv, int free_argv);

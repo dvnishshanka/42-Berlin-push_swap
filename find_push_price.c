@@ -25,6 +25,14 @@ static t_stack_node	*find_node(t_stack_node *stack, size_t target)
 	return (NULL);
 }
 
+// Return the smallest number
+int	find_small_num(int num1, int num2)
+{
+	if (num1 < num2)
+		return (num1);
+	return (num2);
+}
+
 // Calculate push_price to bring the target node from rotating.
 size_t	cal_price_from(size_t pos, size_t length, char dir)
 {
@@ -50,7 +58,7 @@ void	cal_push_price(t_stack_node	*a, t_stack_node *b)
 		if (a_pos == 0 && b_pos == 0)
 			b->push_price = 1;
 		else
-			insert_push_op(a,b);
+			insert_push_op(a, b);
 		if (b->push_price == 1)
 			break ;
 		b = b->next;

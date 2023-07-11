@@ -86,7 +86,8 @@ static void	push_items_a(t_stack_node **a, t_stack_node **b)
 }
 
 // final rotation of stack a, so that the smallest no will be at the top
-static void	final_rotation(t_stack_node **a, size_t price_from_top, size_t price_from_bot)
+static void	final_rotation(t_stack_node **a, size_t price_from_top,
+	size_t price_from_bot)
 {
 	if (price_from_top < price_from_bot)
 	{
@@ -118,7 +119,9 @@ void	big_sort(t_stack_node **a, t_stack_node **b)
 	update_target_nodes(b, *a);
 	push_items_a(a, b);
 	smallest_node = find_smallest(*a);
-	price_from_top = cal_price_from(smallest_node->current_pos, (ft_last_node(*a)->current_pos) + 1,'u');
-	price_from_bot = cal_price_from(smallest_node->current_pos, (ft_last_node(*a)->current_pos) + 1,'d');
+	price_from_top = cal_price_from(smallest_node->current_pos,
+			(ft_last_node(*a)->current_pos) + 1, 'u');
+	price_from_bot = cal_price_from(smallest_node->current_pos,
+			(ft_last_node(*a)->current_pos) + 1, 'd');
 	final_rotation(a, price_from_top, price_from_bot);
 }

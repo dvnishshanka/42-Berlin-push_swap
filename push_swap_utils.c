@@ -56,7 +56,7 @@ void	update_target_nodes(t_stack_node **b, t_stack_node *a)
 	curr_node = *b;
 	while (curr_node)
 	{
-		target_val = find_target_node(a,curr_node->value);
+		target_val = find_target_node(a, curr_node->value);
 		curr_node->target_node = target_val;
 		curr_node = curr_node->next;
 	}

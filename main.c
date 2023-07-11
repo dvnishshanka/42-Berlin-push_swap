@@ -20,8 +20,13 @@ void	print_list(t_stack_node *list, char *msg)
 	printf("----------Stack %s---------\n", msg);
 	while (current_node)
 	{
-		printf("Node %ld- %d target: %d push_price: %ld ",current_node->current_pos, current_node->value, current_node->target_node, current_node->push_price);
-		printf("ra:%ld rb:%ld rr:%ld rra:%ld rrb:%ld prev: %p next: %p\n", current_node->ra, current_node->rb, current_node->rr, current_node->rra, current_node->rrb, current_node->prev, current_node->next);
+		printf("Node %ld- %d target: %d push_price: %ld ",
+			current_node->current_pos, current_node->value,
+			current_node->target_node, current_node->push_price);
+		printf("ra:%ld rb:%ld rr:%ld rra:%ld rrb:%ld prev: %p next: %p\n",
+			current_node->ra, current_node->rb, current_node->rr,
+			current_node->rra, current_node->rrb,
+			current_node->prev, current_node->next);
 		current_node = current_node->next;
 	}
 	printf("\n");
@@ -55,7 +60,6 @@ int	main(int argc, char **argv)
 		else if (stack_length > 3)
 			big_sort(&a, &b);
 	}
-	// print_list(a, "a");
 	if (free_argv)
 		ft_free_array(argv, 0);
 	ft_free_stack(a);
