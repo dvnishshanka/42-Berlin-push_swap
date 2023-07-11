@@ -65,6 +65,12 @@ static char	*insert_word(char *str, char sep, char *argv)
 	return (str);
 }
 
+static void	free_arr(char **argv, int i)
+{
+	ft_free_array(argv, i);
+	print_error();
+}
+
 char	**ft_split(char *str, char sep)
 {
 	char	**argv;
@@ -76,7 +82,7 @@ char	**ft_split(char *str, char sep)
 	argv = (char **)malloc((sizeof (char *)) * (word_count + 2));
 	if (!argv)
 		print_error();
-	while (i < (word_count + 2))
+	while (i++ < (word_count + 2))
 	{
 		if (i == 0 || i == word_count + 1)
 			argv[i] = NULL;
@@ -85,13 +91,9 @@ char	**ft_split(char *str, char sep)
 			argv[i] = (char *)malloc(sizeof (char)
 					* (cal_word_len(str, ' ') + 1));
 			if (!argv[i])
-			{
-				ft_free_array(argv, i);
-				print_error();
-			}
+			free_arr(argv, i);
 			str = insert_word(str, ' ', argv[i]);
 		}
-		i ++;
 	}
 	return (argv);
 }
