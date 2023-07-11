@@ -37,6 +37,11 @@ You have 2 stacks named a and b.
   - **rrb (reverse rotate b):** Shift down all elements of stack b by 1. The last element becomes the first one.
     
   - **rrr :** rra and rrb at the same time.
+    
+**Resources**
 
+- https://medium.com/@ayogun/push-swap-c1f5d2d41e97
+- https://www.youtube.com/watch?v=OaG81sDEpVk
+  
 **Result: :one::zero::zero: / :one::zero::zero: :heavy_check_mark:**
 
