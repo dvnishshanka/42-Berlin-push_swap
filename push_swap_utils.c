@@ -12,13 +12,6 @@
 
 #include "push_swap.h"
 
-// Print the error message
-void	print_error(void)
-{
-	write(1, "Error\n", 6);
-	exit(1);
-}
-
 // Convert a string into a long integer.
 // In case of an error "2147483648" number is returned.
 long int	ft_atol(const char *str)
@@ -44,6 +37,18 @@ long int	ft_atol(const char *str)
 		str ++;
 	}
 	return (num * (sign));
+}
+
+// Check for duplicate numbers. Return 0 if there are no duplicate values.
+int	check_duplicate(long int num, t_stack_node *a)
+{
+	while (a)
+	{
+		if (a->value == num)
+			return (1);
+		a = a->next ;
+	}
+	return (0);
 }
 
 void	update_target_nodes(t_stack_node **b, t_stack_node *a)

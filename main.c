@@ -32,12 +32,24 @@ void	print_list(t_stack_node *list, char *msg)
 	printf("\n");
 }
 
+static void	sort(t_stack_node *a, t_stack_node *b)
+{
+	size_t			stack_length;
+
+	stack_length = (ft_last_node(a)->current_pos) + 1;
+	if (stack_length == 2)
+		sa(&a);
+	else if (stack_length == 3)
+		small_sort(&a);
+	else if (stack_length > 3)
+		big_sort(&a, &b);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
 	t_stack_node	*b;
 	int				free_argv;
-	size_t			stack_length;
 
 	free_argv = 0;
 	a = NULL;
@@ -51,17 +63,7 @@ int	main(int argc, char **argv)
 	}
 	a = init_stack(a, argv, free_argv);
 	if (is_stack_sorted(a))
-	{
-		stack_length = (ft_last_node(a)->current_pos) + 1;
-		if (stack_length == 2)
-			sa(&a);
-		else if (stack_length == 3)
-			small_sort(&a);
-		else if (stack_length > 3)
-			big_sort(&a, &b);
-	}
-	if (free_argv)
-		ft_free_array(argv, 0);
-	ft_free_stack(a);
+		sort(a, b);
+	free_all(a, argv, free_argv);
 	return (0);
 }

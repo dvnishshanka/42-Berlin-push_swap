@@ -60,22 +60,27 @@ void			sb(t_stack_node **b);
 void			ss(t_stack_node **a, t_stack_node **b);
 
 size_t			find_target_node(t_stack_node *stack, int value);
-int				is_stack_sorted(t_stack_node *stack);
-t_stack_node	*ft_last_node(t_stack_node *stack);
 void			small_sort(t_stack_node **stack);
 void			big_sort(t_stack_node **a, t_stack_node **b);
 void			update_target_nodes(t_stack_node **b, t_stack_node *a);
 void			cal_push_price(t_stack_node	*a, t_stack_node *b);
 void			reset_node_data(t_stack_node *stack);
 size_t			cal_price_from(size_t pos, size_t length, char dir);
-t_stack_node	*find_smallest(t_stack_node *stack);
 void			insert_push_op(t_stack_node *a, t_stack_node *b);
 void			reset_seq(t_stack_node *stack);
 
-// Freeing the memory
-void			ft_free_stack(t_stack_node *a);
-void			ft_free_array(char **str, int el);
+// Util Functions
+int				check_duplicate(long int num, t_stack_node *a);
+int				is_stack_sorted(t_stack_node *stack);
+t_stack_node	*find_smallest(t_stack_node *stack);
+t_stack_node	*ft_last_node(t_stack_node *stack);
 
+// Freeing the memory
+void			ft_free_array(char **str, int el);
+void			free_all(t_stack_node *a, char **argv, int free_argv);
+void			free_n_print_error(t_stack_node *a, char **argv, int free_argv);
+
+// Printing
 void			print_list(t_stack_node *list, char *msg);
 
 #endif

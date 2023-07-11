@@ -28,7 +28,7 @@ void	ft_free_array(char **str, int el)
 }
 
 // Free the allocated memory for the list
-void	ft_free_stack(t_stack_node *a)
+static void	ft_free_stack(t_stack_node *a)
 {
 	t_stack_node	*current_node;
 	t_stack_node	*next_node;
@@ -40,4 +40,26 @@ void	ft_free_stack(t_stack_node *a)
 		next_node = current_node->next;
 		free(current_node);
 	}
+}
+
+// Free stack and array
+void	free_all(t_stack_node *a, char **argv, int free_argv)
+{
+	ft_free_stack(a);
+	if (free_argv)
+		ft_free_array(argv, 0);
+}
+
+// Print the error message
+void	print_error(void)
+{
+	write(1, "Error\n", 6);
+	exit(1);
+}
+
+// Free the stack, array and print error
+void	free_n_print_error(t_stack_node *a, char **argv, int free_argv)
+{
+	free_all(a, argv, free_argv);
+	print_error();
 }

@@ -35,18 +35,6 @@ static t_stack_node	*ft_lstnew(int value)
 	return (new_node);
 }
 
-// Check for duplicate numbers. Return 0 if there are no duplicate values.
-int	check_duplicate(long int num, t_stack_node *a)
-{
-	while (a)
-	{
-		if (a->value == num)
-			return (1);
-		a = a->next ;
-	}
-	return (0);
-}
-
 // Include index on stack
 void	insert_node_pos(t_stack_node *stack)
 {
@@ -74,15 +62,6 @@ void	insert_target_node(t_stack_node *stack)
 	}
 }
 
-// Free the stack and print error
-static void	free_stack(t_stack_node *a, char **argv, int free_argv)
-{
-	ft_free_stack(a);
-	if (free_argv)
-		ft_free_array(argv, 0);
-	print_error();
-}
-
 // Initialize the stack
 t_stack_node	*init_stack(t_stack_node *a, char **argv, int free_argv)
 {
@@ -96,7 +75,7 @@ t_stack_node	*init_stack(t_stack_node *a, char **argv, int free_argv)
 	{
 		num = ft_atol(argv[i]);
 		if (check_duplicate(num, a) || num > 2147483647 || num < (-2147483648))
-			free_stack(a, argv, free_argv);
+			free_n_print_error(a, argv, free_argv);
 		if (i == 1)
 		{
 			a = ft_lstnew(num);
