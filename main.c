@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	print_list(t_stack_node *list, char *msg)
+/*void	print_list(t_stack_node *list, char *msg)
 {
 	t_stack_node	*current_node;
 
@@ -30,19 +30,19 @@ void	print_list(t_stack_node *list, char *msg)
 		current_node = current_node->next;
 	}
 	printf("\n");
-}
+}*/
 
-static void	sort(t_stack_node *a, t_stack_node *b)
+static void	sort(t_stack_node **a, t_stack_node **b)
 {
 	size_t			stack_length;
 
-	stack_length = (ft_last_node(a)->current_pos) + 1;
+	stack_length = (ft_last_node(*a)->current_pos) + 1;
 	if (stack_length == 2)
-		sa(&a);
+		sa(a);
 	else if (stack_length == 3)
-		small_sort(&a);
+		small_sort(a);
 	else if (stack_length > 3)
-		big_sort(&a, &b);
+		big_sort(a, b);
 }
 
 int	main(int argc, char **argv)
@@ -63,7 +63,7 @@ int	main(int argc, char **argv)
 	}
 	a = init_stack(a, argv, free_argv);
 	if (is_stack_sorted(a))
-		sort(a, b);
+		sort(&a, &b);
 	free_all(a, argv, free_argv);
 	return (0);
 }

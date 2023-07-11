@@ -28,7 +28,7 @@ void	ft_free_array(char **str, int el)
 }
 
 // Free the allocated memory for the list
-static void	ft_free_stack(t_stack_node *a)
+void	ft_free_stack(t_stack_node *a)
 {
 	t_stack_node	*current_node;
 	t_stack_node	*next_node;

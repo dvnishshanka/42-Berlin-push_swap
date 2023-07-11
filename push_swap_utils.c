@@ -23,7 +23,7 @@ long int	ft_atol(const char *str)
 	num = 0;
 	if (!*str)
 		return (2147483648);
-	if (*str && *str == '-')
+	if (*str && *str == '-' && (*(str + 1) <= '9' && *(str + 1) >= '0'))
 	{
 		sign = -1;
 		str ++;

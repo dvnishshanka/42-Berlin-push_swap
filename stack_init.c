@@ -62,6 +62,15 @@ void	insert_target_node(t_stack_node *stack)
 	}
 }
 
+static void	insert_node(t_stack_node **new_node, t_stack_node **prev_node,
+	long int num)
+{
+	*new_node = ft_lstnew(num);
+	(*prev_node)->next = *new_node;
+	(*new_node)->prev = *prev_node;
+	*prev_node = *new_node;
+}
+
 // Initialize the stack
 t_stack_node	*init_stack(t_stack_node *a, char **argv, int free_argv)
 {
@@ -82,12 +91,7 @@ t_stack_node	*init_stack(t_stack_node *a, char **argv, int free_argv)
 			prev_node = a;
 		}
 		else
-		{
-			new_node = ft_lstnew(num);
-			prev_node->next = new_node;
-			new_node->prev = prev_node;
-			prev_node = new_node;
-		}
+			insert_node(&new_node, &prev_node, num);
 		i++;
 	}
 	insert_node_pos(a);

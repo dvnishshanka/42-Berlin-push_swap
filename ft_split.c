@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 
+// If word count is 0, will exit.
 static int	count_words(char *str, char sep)
 {
 	int	word_count;
@@ -31,6 +32,8 @@ static int	count_words(char *str, char sep)
 			str ++;
 		}
 	}
+	if (word_count == 0)
+		exit (0);
 	return (word_count);
 }
 
@@ -82,7 +85,7 @@ char	**ft_split(char *str, char sep)
 	argv = (char **)malloc((sizeof (char *)) * (word_count + 2));
 	if (!argv)
 		print_error();
-	while (i++ < (word_count + 2))
+	while (i < (word_count + 2))
 	{
 		if (i == 0 || i == word_count + 1)
 			argv[i] = NULL;
@@ -91,9 +94,10 @@ char	**ft_split(char *str, char sep)
 			argv[i] = (char *)malloc(sizeof (char)
 					* (cal_word_len(str, ' ') + 1));
 			if (!argv[i])
-			free_arr(argv, i);
+				free_arr(argv, i);
 			str = insert_word(str, ' ', argv[i]);
 		}
+		i++;
 	}
 	return (argv);
 }
